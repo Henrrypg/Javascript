@@ -28,5 +28,6 @@ Route.group(() => {
   Route.get('products', 'ProductController.index'); //.middleware('auth');
   Route.post('products', 'ProductController.create').middleware('auth');
   Route.delete('products/:id', 'ProductController.destroy').middleware('auth');
+  Route.patch('products/:id', 'ProductController.update').middleware('auth');
 }).prefix('api');
 

@@ -14,7 +14,6 @@ class ProductController {
     }
     //create a new product
     async create({auth, request}){
-        console
         const user = await auth.getUser();
         const {name, description, price, quantity} = request.all();
         const product = new Product();
@@ -29,10 +28,21 @@ class ProductController {
     }
 //delete a product
     async destroy({auth, request, params}){
+        const user = await auth.getUser();
         const id  = params.id;
         const product = await Product.find(id);
         AuthorizationService.verifyPermission(product);
         await product.delete();
+        return product;
+    }
+
+    async update({auth, request, params}){
+        const user = await auth.getUser();
+        const id  = params.id;
+        const product = await Product.find(id);
+        AuthorizationService.verifyPermission(product);
+        product.merge(request.only('name'));
+        await product.save();
         return product;
     }
 }
