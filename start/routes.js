@@ -18,10 +18,15 @@ const Route = use('Route')
 
 
 Route.group(() => {
+
+//User routes
   Route.post('auth/register', 'UserController.register');
   Route.post('auth/login', 'UserController.login');
 
+
+// Product CRUD routes
   Route.get('products', 'ProductController.index'); //.middleware('auth');
   Route.post('products', 'ProductController.create').middleware('auth');
+  Route.delete('products/:id', 'ProductController.destroy').middleware('auth');
 }).prefix('api');
 

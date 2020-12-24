@@ -1,13 +1,18 @@
 'use strict'
+
+const AuthorizationService = require("../../Services/AuthorizationService")
+
 const Database = use('Database')
 const Product = use('App/Models/Product')
 
 class ProductController {
+    //list all products
     async index(){
+        //using database directly
         const data = await Database.table('products')
         return data
-        //return await product.products().fetch();
     }
+    //create a new product
     async create({auth, request}){
         console
         const user = await auth.getUser();
@@ -19,8 +24,16 @@ class ProductController {
             price,
             quantity
         });
-        console.log(product);
         await product.save();
+        return product;
+    }
+//delete a product
+    async destroy({auth, request, params}){
+        const id  = params.id;
+        const product = await Product.find(id);
+        AuthorizationService.verifyPermission(product);
+        await product.delete();
+        return product;
     }
 }
 
