@@ -12,7 +12,6 @@ class ProductController {
         const data = await Database.table('products')
         return data
     }
-    //create a new product
     async create({auth, request}){
         const user = await auth.getUser();
         const {name, description, price, quantity} = request.all();
@@ -26,7 +25,6 @@ class ProductController {
         await product.save();
         return product;
     }
-//delete a product
     async destroy({auth, request, params}){
         const user = await auth.getUser();
         const id  = params.id;
@@ -44,6 +42,15 @@ class ProductController {
         product.merge(request.only('name'));
         await product.save();
         return product;
+    }
+
+    async filter({request, params}) {
+        
+        let query = params.query;
+        let products = await Product.query().where('name', 'like', '%' + query + '%')
+          .orWhere('description', 'like', '%' + query + '%').fetch();
+          console.log(products);
+        return products
     }
 }
 
