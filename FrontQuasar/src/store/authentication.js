@@ -20,7 +20,7 @@ const mutations = {
 }
 const actions = {
     register({commit, state}){
-        axios.post('http://127.0.0.1:3333/api/auth/register', {
+        axios.post('https://prueba-adoniss.herokuapp.com/api/auth/register', {
             email: state.Email,
             password: state.Password
         }).then(({data}) => {
@@ -29,7 +29,7 @@ const actions = {
         })
     },
     login({commit, state}){
-        axios.post('http://127.0.0.1:3333/api/auth/login', {
+        axios.post('https://prueba-adoniss.herokuapp.com/api/auth/login', {
             email: state.Email,
             password: state.Password
         }).then(({data}) => {

@@ -19,7 +19,7 @@ const actions = {
         let headers = {
             Authorization : `Bearer ${rootState.authentication.token}`
         }    
-        axios.get('http://127.0.0.1:3333/api/products', {
+        axios.get('https://prueba-adoniss.herokuapp.com/api/products', {
             headers: headers
         }).then(res => {
             commit('setProducts', res.data)
@@ -28,8 +28,13 @@ const actions = {
                 });
     },
     filterProducts({commit}, query){
+        let headers = {
+            Authorization : `Bearer ${rootState.authentication.token}`
+        } 
         if (query === ''){
-            axios.get('http://127.0.0.1:3333/api/products').then(res => {
+            axios.get('https://prueba-adoniss.herokuapp.com/api/products', {
+                headers: headers
+            }).then(res => {
             commit('setProducts', res.data)
         }).catch(err => {
             console.log(err)
@@ -38,7 +43,7 @@ const actions = {
             let params = {
                 query
             };
-            axios.get(`http://127.0.0.1:3333/api/search/${params.query}`, params).then(res => {
+            axios.get(`https://prueba-adoniss.herokuapp.com/api/search/${params.query}`, params).then(res => {
                 commit('setProducts', res.data)
             }).catch(err => {
                 console.log(err) 

@@ -31,6 +31,6 @@ Route.group(() => {
   Route.patch('products/:id', 'ProductController.update').middleware('auth');
 
 //filter
-  Route.get('search/:query', 'ProductController.filter')
+  Route.get('search/:query', 'ProductController.filter').middleware('auth');
 }).prefix('api');
 
