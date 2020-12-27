@@ -10,13 +10,14 @@
 </template>
 
 <script lang="ts">
+/* eslint-disable */
 import _ from 'lodash'
-import {mapGetters} from 'vuex'
-import {mapActions} from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
+
 import Toolbar from '../components/Toolbar.vue'
 import { defineComponent, ref } from '@vue/composition-api'
 
 export default defineComponent({
-  components: { Toolbar },
+  components: { Toolbar }
 })
 </script>

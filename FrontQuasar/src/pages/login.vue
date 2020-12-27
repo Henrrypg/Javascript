@@ -7,13 +7,14 @@
             <q-space />
             <q-btn color="green" @click="login" label="Login" style="margin: 1%;"></q-btn>
         </div>
-        
+
     </div>
 </template>
 
 <script>
+/* eslint-disable */
   import vue from 'vue'
-  import { mapState, mapMutations,mapActions,mapGetters } from 'vuex'
+  import { mapState, mapMutations, mapActions, mapGetters } from 'vuex'
   export default {
     methods: {
       ...mapActions('authentication', ['login']),
@@ -26,7 +27,7 @@
       ...mapState('authentication', [
         'Email',
         'Password'
-      ]),
+      ])
     }
   }
 </script>

@@ -1,55 +1,55 @@
+/* eslint-disable */
 import axios from 'axios'
-
 
 const state = {
     products: [],
-    token: "",
+    token: ''
 }
 const mutations = {
     setProducts(state, products) {
-        state.products = products;
+        state.products = products
     },
     setToken(state, token) {
-        state.token = token;
-    },
+        state.token = token
+    }
 
 }
 const actions = {
-    FetchProducts({commit, rootState}) {
-        let headers = {
-            Authorization : `Bearer ${rootState.authentication.token}`
-        }    
+    FetchProducts({ commit, rootState }) {
+        const headers = {
+            Authorization: `Bearer ${rootState.authentication.token}`
+        }
         axios.get('https://prueba-adoniss.herokuapp.com/api/products', {
             headers: headers
         }).then(res => {
             commit('setProducts', res.data)
             }).catch(err => {
             console.log(err)
-                });
+                })
     },
-    filterProducts({commit, rootState}, query){
-        let headers = {
-            Authorization : `Bearer ${rootState.authentication.token}`
-        } 
-        if (query === ''){
+    filterProducts({ commit, rootState }, query) {
+        const headers = {
+            Authorization: `Bearer ${rootState.authentication.token}`
+        }
+        if (query === '') {
             axios.get('https://prueba-adoniss.herokuapp.com/api/products', {
                 headers: headers
             }).then(res => {
             commit('setProducts', res.data)
         }).catch(err => {
             console.log(err)
-        });
-        }else{
-            let params = {
-                query,
-            };
+        })
+        } else {
+            const params = {
+                query
+            }
             axios.get(`https://prueba-adoniss.herokuapp.com/api/search/${params.query}`, {
-                params:params,
+                params: params,
                 headers: headers
             }).then(res => {
                 commit('setProducts', res.data)
             }).catch(err => {
-                console.log(err) 
+                console.log(err)
             })
         }
     }
@@ -63,7 +63,7 @@ const getters = {
       },
     searchview: (state) => {
         return state.searchview
-      },
+      }
 }
 export default {
     namespaced: true,

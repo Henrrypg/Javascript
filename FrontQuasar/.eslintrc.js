@@ -72,7 +72,6 @@ module.exports = {
     // allow paren-less arrow functions
     'arrow-parens': 'off',
     'one-var': 'off',
-
     'import/first': 'off',
     'import/named': 'error',
     'import/namespace': 'error',
@@ -82,6 +81,12 @@ module.exports = {
     'import/no-unresolved': 'off',
     'import/no-extraneous-dependencies': 'off',
     'prefer-promise-reject-errors': 'off',
+    'indent': ['off', 4],
+    'no-mixed-spaces-and-tabs': ['off', 'smart-tabs'],
+    'no-spaced-func': 0,
+    'func-call-spacing': 0,
+    'space-before-function-paren': 0,
+    'no-multiple-empty-lines': 0,
 
     // TypeScript
     quotes: ['warn', 'single', { avoidEscape: true }],

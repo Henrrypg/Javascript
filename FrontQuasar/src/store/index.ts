@@ -1,8 +1,8 @@
 import { store } from 'quasar/wrappers'
 import Vuex from 'vuex'
 
-import products from './store-products';
-import authentication from './authentication';
+import products from './store-products'
+import authentication from './authentication'
 // import { ExampleStateInterface } from './module-example/state';
 
 /*

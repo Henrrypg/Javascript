@@ -2,7 +2,7 @@
   <div id="App">
     <br>
     <Products/>
-    
+
   </div>
 </template>
 
@@ -10,9 +10,9 @@
 import Products from '../components/Products.vue'
 
   export default {
-    name: "App",
+    name: 'App',
     components: {
-      Products,
-    },
+      Products
+    }
   }
 </script>

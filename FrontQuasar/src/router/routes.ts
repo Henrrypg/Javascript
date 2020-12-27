@@ -1,6 +1,5 @@
 import { RouteConfig } from 'vue-router'
 import store from '../store/authentication.js'
-import products from '../store/store-products.js'
 
 
 
@@ -24,15 +23,14 @@ const routes: RouteConfig[] = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/register.vue') }
-    ],
+    ]
   },
   {
     path: '/login',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/login.vue') }
-    ],
-
+    ]
   },
 
   // Always leave this as last one,

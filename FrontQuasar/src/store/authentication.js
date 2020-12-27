@@ -1,53 +1,54 @@
+/* eslint-disable */
 import axios from 'axios'
 const state = {
     Email: null,
     Password: null,
-    token: null,
+    token: null
 }
 const mutations = {
-    setEmail(state, email){
-        state.Email = email;
+    setEmail(state, email) {
+        state.Email = email
     },
-    setPassword(state, password){
-        state.Password = password;
+    setPassword(state, password) {
+        state.Password = password
     },
-    setToken(state, token){
-        state.token = token;
+    setToken(state, token) {
+        state.token = token
     },
-    unsetToken(state){
-        state.token = null;
+    unsetToken(state) {
+        state.token = null
     }
 }
 const actions = {
-    register({commit, state}){
+    register({ commit, state }) {
         axios.post('https://prueba-adoniss.herokuapp.com/api/auth/register', {
             email: state.Email,
             password: state.Password
-        }).then(({data}) => {
-            commit('setToken', data.token);
-            this.$router.push('/');
+        }).then(({ data }) => {
+            commit('setToken', data.token)
+            this.$router.push('/')
         })
     },
-    login({commit, state}){
+    login({ commit, state }) {
         axios.post('https://prueba-adoniss.herokuapp.com/api/auth/login', {
             email: state.Email,
             password: state.Password
-        }).then(({data}) => {
-            commit('setToken', data.token);
-            this.$router.push('/');
+        }).then(({ data }) => {
+            commit('setToken', data.token)
+            this.$router.push('/')
         })
     },
-    logout({commit}){
-        commit('unsetToken');
-        this.$router.push('/login');
+    logout({ commit }) {
+        commit('unsetToken')
+        this.$router.push('/login')
     }
 }
 const getters = {
-    isLoggedIn(state){
-        return !!state.token;
+    isLoggedIn(state) {
+        return !!state.token
     }
 }
-export default{
+export default {
     namespaced: true,
     state,
     mutations,

@@ -21,14 +21,9 @@
 </template>
 
 <script>
+/* eslint-disable */
   export default {
     name: "Product",
     props: ['product'],
   };
-
-<style scoped>
-  .card {
-    cursor: pointer;
-    margin-bottom: 8px;
-  }
-</style>
+</script>

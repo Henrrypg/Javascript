@@ -45,7 +45,7 @@
       </q-carousel>
     </div>
     <div class="q-pa-md">
-      <q-card 
+      <q-card
       class="my-card"
       v-for="product in products" :key="product.id"
       style="margin: 1%; float: left; max-width: 50%;"
@@ -67,14 +67,15 @@
 </template>
 
 <script>
+/* eslint-disable */
   import vue from 'vue'
-  import { mapGetters } from 'vuex'
-  import { mapActions } from 'vuex'
+  import { mapGetters, mapActions } from 'vuex'
+
   import product from '../components/Product'
   export default {
-    data(){
-      return{
-        slide: 'style',
+    data() {
+      return {
+        slide: 'style'
       }
     },
     mounted() {
@@ -84,7 +85,7 @@
       ...mapActions('products', ['product'])
     },
     computed: {
-      ...mapGetters('products',['products']
+      ...mapGetters('products', ['products']
       )
     }
   }
