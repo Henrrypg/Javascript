@@ -1,38 +1,57 @@
 import axios from 'axios'
 
 const state = {
-    products: [{
-        id: 1,
-        name: "das"
-    },]
+    products: [],
+    token: "",
+    searchview: true
 }
 const mutations = {
-    SET_PRODUCTS(state, products) {
+    setProducts(state, products) {
         state.products = products
+    },
+    setToken(state, token) {
+        state.token = token
     },
 }
 const actions = {
-    FetchProducts({commit}) {
-        axios.get('http://127.0.0.1:3333/api/products').then(res => {
-            commit('SET_PRODUCTS', res.data)
+    FetchProducts({commit, rootState}) {
+        console.log(rootState.authentication.token)
+        let headers = {
+            Authorization : `Bearer ${rootState.authentication.token}`
+        }    
+        axios.get('http://127.0.0.1:3333/api/products', {
+            headers: headers
+        }).then(res => {
+            commit('setProducts', res.data)
+            }).catch(err => {
+            console.log(err)
+                });
+    },
+    filterProducts({commit}, query){
+        if (query === ''){
+            axios.get('http://127.0.0.1:3333/api/products').then(res => {
+            commit('setProducts', res.data)
         }).catch(err => {
             console.log(err)
         });
-    },
-    filterProducts({commit}, query){
-        let params = {
-            query
-        };
-        axios.get(`http://127.0.0.1:3333/api/search/${params.query}`, params).then(res => {
-            commit('SET_PRODUCTS', res.data)
-        }).catch(err => {
-            console.log(err) 
-        })
+        }else{
+            let params = {
+                query
+            };
+            axios.get(`http://127.0.0.1:3333/api/search/${params.query}`, params).then(res => {
+                commit('setProducts', res.data)
+            }).catch(err => {
+                console.log(err) 
+            })
+        }
     }
 }
 const getters = {
     products: (state) => {
         return state.products
+      },
+    token: (state) => {
+        return state.token
       },
 }
 export default {

@@ -44,7 +44,7 @@
         </q-carousel-slide>
       </q-carousel>
     </div>
-    <div class="col-xs-12 col-sm-6 col-md-4">
+    <div class="q-pa-md">
       <q-card 
       class="my-card"
       v-for="product in products" :key="product.id"

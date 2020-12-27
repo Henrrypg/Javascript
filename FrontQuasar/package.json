@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
+    "@types/lodash": "^4.14.166",
     "@vue/composition-api": "^0.6.4",
     "axios": "^0.18.1",
     "core-js": "^3.6.5",
