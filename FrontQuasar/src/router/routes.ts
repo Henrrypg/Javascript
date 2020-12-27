@@ -1,5 +1,8 @@
 import { RouteConfig } from 'vue-router'
 import store from '../store/authentication.js'
+import products from '../store/store-products.js'
+
+
 
 const routes: RouteConfig[] = [
   {
@@ -29,7 +32,7 @@ const routes: RouteConfig[] = [
     children: [
       { path: '', component: () => import('pages/login.vue') }
     ],
-    
+
   },
 
   // Always leave this as last one,

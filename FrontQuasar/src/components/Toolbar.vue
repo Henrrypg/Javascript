@@ -2,7 +2,7 @@
   <q-toolbar class="bg-primary text-white q-my-md shadow-2" style="margin:0px;">
       <q-separator dark vertical inset />
       <router-link class="nav-link" to="/" style="color: white"><q-btn stretch flat label="Shop"/></router-link> 
-      <q-input dark dense standout v-model="query" input-class="text-right" class="q-ml-md">
+      <q-input dark dense standout v-model="query" input-class="text-right" class="q-ml-md" >
           <template v-slot:append>
             <q-icon @keyup.enter="filterProducts" v-if="query === ''" name="search" />
             <q-icon v-else name="clear" class="cursor-pointer" @click="query = ''" />
@@ -47,7 +47,7 @@ export default defineComponent({
   computed: {
       ...mapGetters('authentication', [
           'isLoggedIn'
-      ])
+      ]),
   },
   watch: {
     query: {
